@@ -182,6 +182,7 @@ extension NoteListViewController: UITableViewDelegate, UITableViewDataSource {
             }
 
             tableView.deleteRows(at: [indexPath], with: .right)
+            tableView.reloadData()
         case .insert:
             performSegue(withIdentifier: "list2detail", sender: UIBarButtonItem())
         default:
@@ -194,5 +195,6 @@ extension NoteListViewController: UITableViewDelegate, UITableViewDataSource {
         let movNote = notepad.noteList[sourceIndexPath.row]
         notepad.deleteNote(at: sourceIndexPath.row)
         notepad.insertNote(movNote, at: destinationIndexPath.row)
+        tableView.reloadData()
     }
 }
